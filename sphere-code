@@ -1,0 +1,24 @@
+VPython library to create a circling sphere:
+
+from vpython import *
+
+# Create a sphere
+sphere(radius=0.5, color=color.red)
+
+# Set initial position and velocity
+pos = vector(0, 0, 0)
+vel = vector(0, 1, 0)
+
+# Set up the animation loop
+while True:
+    # Update the position of the sphere
+    pos = pos + vel*dt
+    
+    # Calculate the new velocity vector
+    vel = rotate(vel, angle=radians(1), axis=vector(0, 0, 1))
+    
+    # Update the position of the sphere
+    sphere.pos = pos
+    
+    # Wait for a short time to slow down the animation
+    rate(30)
